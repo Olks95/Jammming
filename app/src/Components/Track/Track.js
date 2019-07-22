@@ -1,23 +1,24 @@
 import React from 'react';
-import 'Track.css';
+import './Track.css';
 
 class Track extends React.Component {
-	constructor() {
+	constructor(props) {
 		super(props);
 		this.state = { buttonIcon: '+' };
-	};
-		const renderAction = () => {
-			if(isRemoval === false) {
-				this.setState({ buttonIcon: '-' });
-			}
+	}
+
+	renderAction() {
+		if(this.props.isRemoval === false) {
+			this.setState({ buttonIcon: '-' });
 		}
+	}
 
 	render() {
 		return (
 			<div className="Track">
 			  <div className="Track-information">
-			    <h3>{/*<!-- track name will go here -->*/}</h3>
-			    <p>{/*<!-- track artist will go here--> | <!-- track album will go here -->*/}</p>
+			    <h3>{this.props.track.name}</h3>
+			    <p>{this.props.track.artist} | {this.props.track.album}</p>
 			  </div>
 			  <button className="Track-action">{/*<!-- + or - will go here -->*/}</button>
 			</div>

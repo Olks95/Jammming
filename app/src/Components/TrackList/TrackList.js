@@ -1,15 +1,15 @@
 import React from 'react';
-import 'TrackList.css';
+import './TrackList.css';
 import Track from '../Track/Track.js';
 
-class Tracklist extends React.Component {
+class TrackList extends React.Component {
 	render() {
 		return (
 			<div className="TrackList">
-			    {/*<!-- You will add a map method that renders a set of Track components  -->*/}
+				{this.props.tracks.map(track => <Track key={track.id} track={track} />)}
 			</div>
 		);
 	}
 }
 
-export default Tracklist;
+export default TrackList;
