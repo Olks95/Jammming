@@ -4,13 +4,24 @@ import './Track.css';
 class Track extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { buttonIcon: '+' };
+		this.addTrack = this.addTrack.bind(this);
+		this.removeTrack = this.removeTrack.bind(this);
 	}
 
 	renderAction() {
 		if(this.props.isRemoval === false) {
-			this.setState({ buttonIcon: '-' });
+			return <a className="Track-action" onClick={this.addTrack}>+</a>
+		} else {
+			return <a className="Track-action" onClick={this.removeTrack}>-</a>
 		}
+	}
+
+	addTrack() {
+		this.props.onAdd(this.props.track);
+	}
+
+	removeTrack() {
+		this.props.onRemove(this.props.track);
 	}
 
 	render() {
@@ -20,7 +31,7 @@ class Track extends React.Component {
 			    <h3>{this.props.track.name}</h3>
 			    <p>{this.props.track.artist} | {this.props.track.album}</p>
 			  </div>
-			  <button className="Track-action">{/*<!-- + or - will go here -->*/}</button>
+			  <button className="Track-action">{this.renderAction()}</button>
 			</div>
 		);
 	}
