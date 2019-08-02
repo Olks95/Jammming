@@ -3,21 +3,15 @@ import './App.css';
 import SearchBar from '../SearchBar/SearchBar.js';
 import SearchResults from '../SearchResults/SearchResults.js';
 import Playlist from '../Playlist/Playlist.js';
+import Spotify from '../../util/Spotify.js';
+
+Spotify.getAccessToken();
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     searchResults: [{
-      name: 'How You Remind Me',
-      artist: 'Nickelback',
-      album: 'Silver Side Up',
-      id: 1},
-      {
-      name: "Bonfire Heart",
-      artist: "James Blunt",
-      album: "Moon Landing (Deluxe Edition)",
-      id: 2}],
+     searchResults: [],
     playlistName: "Favorites",
     playlistTracks: [{
       name: 'Brown Eyed Girl',
@@ -60,7 +54,10 @@ class App extends React.Component {
   }
 
   search(term) {
-    console.log(term);
+    Spotify.search(term)
+    .then(searchResults => this.setState({
+      searchResults: searchResults
+    }));
   }
 
   render() {
