@@ -1,4 +1,4 @@
-const redirectUri = "http://localhost:3000/"
+const redirectUri = "http://olksjamming.surge.sh/"
 const clientId = "ea249e6e221f4769b57b15bb63676e37";
 const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
 
